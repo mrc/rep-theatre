@@ -1,0 +1,32 @@
+(in-package #:t-rep-theatre)
+
+(in-root-suite)
+(defsuite* test-all)
+
+(deftest test-are ()
+  (are (null nil)
+       t))
+
+(deftest test-most-with-identity ()
+  (let ((list '(23 5 17 58 40)))
+    (multiple-value-bind (item value position)
+        (most list)
+      (are (= 58 item)
+           (= 58 value)
+           (= 3 position)))))
+
+(deftest test-most-with-different-comparison ()
+  (let ((list '(23 5 17 58 40)))
+    (multiple-value-bind (item value position)
+        (most list :test #'<)
+      (are (= 5 item)
+           (= 5 value)
+           (= 1 position)))))
+
+(deftest test-most-with-custom-key ()
+  (let ((list '(23 -5 17 -58 40)))
+    (multiple-value-bind (item value position)
+        (most list :key #'abs)
+      (are (= -58 item)
+           (= 58 value)
+           (= 3 position)))))
