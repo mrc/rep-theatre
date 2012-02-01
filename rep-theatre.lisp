@@ -2,12 +2,13 @@
 
 (in-package #:rep-theatre)
 
-(defmacro are (test &rest tests)
-  "Evaluate a list of tests with is"
-  `(progn
-     (stefil:is ,test)
-     (unless (null ',tests)
-       (are ,@tests))))
+(defmacro are (&rest tests)
+  "Evaluate a list of tests with is."
+  `(let ((result (gensym "result"))
+         (test (gensym)))
+     (loop :for test :in ',tests
+        do (setf result (stefil:is test)))
+     result))
 
 ;; Adapted from Raffael Cavallaro's find-maximizing-item
 ;; http://groups.google.com/group/comp.lang.lisp/msg/dd7435a500d3d434?dmode=source
