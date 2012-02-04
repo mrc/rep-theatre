@@ -24,5 +24,4 @@ the list is returned."
      then (if (funcall test (second current-triplet) (second max-triplet))
               current-triplet
               max-triplet)
-     collecting current-triplet into p
      finally (return (values-list max-triplet))))
