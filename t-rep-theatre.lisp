@@ -7,6 +7,9 @@
   (are (null nil)
        t))
 
+;; (deftest test-are-can-fail ()
+;;   (are (= (+ 2 3) 6)))
+
 (deftest test-most-with-identity ()
   (let ((list '(23 5 17 58 40)))
     (multiple-value-bind (item value position)

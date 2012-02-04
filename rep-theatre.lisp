@@ -4,11 +4,9 @@
 
 (defmacro are (&rest tests)
   "Evaluate a list of tests with is."
-  `(let ((result (gensym "result"))
-         (test (gensym)))
-     (loop :for test :in ',tests
-        do (setf result (stefil:is test)))
-     result))
+  (let ((x (gensym)))
+    `(progn
+       ,@(mapcar (lambda (x) `(stefil:is ,x)) tests))))
 
 ;; Adapted from Raffael Cavallaro's find-maximizing-item
 ;; http://groups.google.com/group/comp.lang.lisp/msg/dd7435a500d3d434?dmode=source
