@@ -25,3 +25,8 @@ the list is returned."
               current-triplet
               max-triplet)
      finally (return (values-list max-triplet))))
+
+(defun make-laplace-smoother (trials classes k)
+  "Return a function which applies add-k smoothing to its input."
+  (lambda (x)
+    (/ (+ x k) (+ trials (* k classes)))))

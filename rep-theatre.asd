@@ -11,5 +11,6 @@
   :components ((:file "package")
                (:file "rep-theatre")
                (:file "t-package")
-               (:file "t-rep-theatre")))
+               (:file "t-rep-theatre")
+               (:file "t-laplace-smoother")))
 
