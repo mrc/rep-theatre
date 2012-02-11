@@ -2,7 +2,6 @@
 
 (defpackage #:rep-theatre
   (:use #:cl)
-  (:export #:are
-           #:most
+  (:export #:most
            #:make-laplace-smoother))
 

@@ -7,7 +7,7 @@
   :name "rep-theatre-tests"
   :version "0.1"
   :serial t
-  :depends-on (#:rep-theatre #:stefil)
+  :depends-on (#:rep-theatre #:stefil #:mrc-stefil-extras)
   :components ((:file "t-package")
                (:file "t-rep-theatre")
                (:file "t-laplace-smoother")))

@@ -2,12 +2,6 @@
 
 (in-package #:rep-theatre)
 
-(defmacro are (&rest tests)
-  "Evaluate a list of tests with is."
-  (let ((x (gensym)))
-    `(progn
-       ,@(mapcar (lambda (x) `(stefil:is ,x)) tests))))
-
 ;; Adapted from Raffael Cavallaro's find-maximizing-item
 ;; http://groups.google.com/group/comp.lang.lisp/msg/dd7435a500d3d434?dmode=source
 ;; <200603221730078930-raffaelcavallaro@pasdespamsilvousplaitmaccom>

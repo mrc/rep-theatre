@@ -8,18 +8,6 @@ Samples should show up in the tests (t-*). I don't want to spend too
 much time documenting these bits and pieces here because this system
 is really just a transitional residence.
 
-** are
-~are~ lets me write tests with a series of assertions without so much
-noise. It uses ~stefil~ but could easily be switched if I switch test
-frameworks.
-
-#+BEGIN_SRC lisp
-  (deftest addition ()
-    (are (= 5 (+ 2 3))
-         (= -5 (+ -2 -3))
-         (= 10 (+ 2 3 5))))
-#+END_SRC lisp
-
 ** most
 ~most~ is like argmax. Give it a function (key) and a sequence, and
 maybe a test like #'< if you want argmin, and it will return the item
@@ -34,6 +22,28 @@ list.
   => "mystery"
   => 15
   => 3
+#+END_SRC
+
+** make-laplace-smoother
+~make-laplace-smoother~ generates a function which applies add-k
+smoothing to its input.
+
+#+BEGIN_SRC lisp
+(let ((smoother (rep-theatre:make-laplace-smoother
+                 100 2 1)))
+  (format t "smoothed 0/100: ~A, smoothed 100/100: ~A, smoothed 50/100: ~A~%"
+          (funcall smoother 0)
+          (funcall smoother 100)
+          (funcall smoother 50)))
+=> smoothed 0/100: 1/102, smoothed 100/100: 101/102, smoothed 50/100: 1/2
+
+(let ((smoother (rep-theatre:make-laplace-smoother
+                 100 2 1)))
+  (format t "smoothed 0/100: ~F, smoothed 100/100: ~F, smoothed 50/100: ~F~%"
+          (funcall smoother 0)
+          (funcall smoother 100)
+          (funcall smoother 50)))
+=> smoothed 0/100: 0.009803922, smoothed 100/100: 0.99019605, smoothed 50/100: 0.5
 #+END_SRC
 
 * Use
