@@ -1,7 +1,7 @@
 (in-package #:t-rep-theatre)
 
-(in-root-suite)
-(defsuite* test-all)
+(in-suite test-all)
+(defsuite* laplace-smoother-tests)
 
 (defparameter *colors* '(red yellow green blue))
 (defparameter *color-samples* '(red green red yellow green red red green))

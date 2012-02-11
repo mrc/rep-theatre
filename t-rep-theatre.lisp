@@ -1,7 +1,7 @@
 (in-package #:t-rep-theatre)
 
-(in-root-suite)
-(defsuite* test-all)
+(in-suite test-all)
+(defsuite* misc-tests)
 
 (deftest test-are ()
   (are (null nil)
